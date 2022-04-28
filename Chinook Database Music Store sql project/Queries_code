@@ -1,0 +1,39 @@
+Query 1
+
+select Artist.Name, count(Album.ArtistId) Total_Albums
+from Album
+join Artist
+on Album.ArtistId = Artist.ArtistId
+group by Artist.Name
+order by Total_Albums DESC
+limit 5;
+
+Query 2
+
+select Playlist.Name, count(PlaylistTrack.PlaylistId) popular_playlist
+from PlaylistTrack
+join Playlist
+on PlaylistTrack.PlaylistId = Playlist.PlaylistId
+group by Playlist.Name
+order by popular_playlist DESC
+limit 5;
+
+Query 3
+
+select Genre.Name, count(Track.GenreId) popular_genre
+from Track
+join Genre
+on Track.GenreId = Genre.GenreId
+group by Genre.Name
+order by popular_genre DESC
+limit 5;
+
+Query 4
+
+select Customer.FirstName, Customer.LastName, sum(Invoice.Total) Total
+from customer 
+join invoice 
+on Customer.CustomerId = Invoice.CustomerId
+group by 1,2
+order by 3 DESC
+limit 5;
